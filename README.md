@@ -47,6 +47,8 @@ oneNN <- function(set, point){
   return(set[number_of_nearest, 3])
   }
   ```
-  Обратим внимание на карту классификации для 1NN.
+  Обратим внимание на карту классификации для 1NN
+  
+![Image alt](https://github.com/Ragnarok7861/Victor/blob/master/1nn_map.png)
 
 
