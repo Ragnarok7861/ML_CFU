@@ -12,6 +12,8 @@
 
 ![Image alt](https://github.com/Ragnarok7861/Victor/blob/master/1nn_10points.png)
 
+
+Рассмотрим программную реализацию функции 1NN на языке программирования R.
 ```
 oneNN <- function(set, point){
   
