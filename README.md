@@ -84,3 +84,85 @@ kNN <- function(k, ordered_arr){
 ```
 
 
+<p>
+  Прежде чем запустить алгоритм kNN для тестовой выборки необходимо выбрать k, для этого будем использовать LOO (leave-one-out CV). Как это выполнить? 
+  
+  1.На вход мы получаем тренировочную выборку. 
+  
+  2.Поочерёдно "вытаскиваем" из набора по одной точке и для каждой точки и выборки без неё запускаем kNN, изменяя k от 1 до длины "новой" обучающей выборки. 
+  
+  3.Сравниваем полученный класс точки с классом этой же точки из изначальной тренировочной выборки, если классы не совпадают, то увеличиваем количество ошибок на данном k на 1. 
+  
+  4.Пройдя все точки по всем k, ищем минимальное количество ошибок, и индекс этого элемента и будет лучшим k для этой выборки.
+</p>
+
+```R
+LOO <- function(arr){
+  
+  row <- dim(arr)[1]
+  
+  Q <- matrix(0, (row - 1), 1)
+  
+  for (i in 1:row) {
+    
+    point <- arr[i, 1:2]
+    new_arr <- arr
+    new_arr <- new_arr[-i, ]
+    ordered_arr <- sort(new_arr, point)
+    
+    for (k in 1:(row - 1)) {
+      
+      class <- kNN(k, ordered_arr)
+      
+      if (class != arr[i, 3]) {
+        Q[k] <- Q[k] + 1
+      }
+      
+    }
+    
+  }
+  
+  min_k <- which.min(Q[1:(row - 1)])
+  min_v <- Q[min_k]
+  
+  
+  I <- matrix(1:(row - 1), (row - 1), 1)
+  
+  for (i in 1:(row - 1)) {
+    Q[i] <- Q[i]/(row - 1)
+  }
+  
+  ## график LOO и k
+  plot(
+    I[1:(row - 1)], 
+    Q[1:(row - 1)], 
+    type = "l", xlab = "k", ylab = "LOO",
+    main = "LOO(k)"
+  )
+  points(min_k, min_v/(row - 1), pch = 21, bg = "black")
+  
+  
+  range <- 5
+  while (min_k - range < 0 || min_k + range > 149) {
+    range <- range - 1
+  }
+  ## график LOO и k увеличенный масштаб
+  plot(
+    I[(min_k - range):(min_k + range)], 
+    Q[(min_k - range):(min_k + range)], 
+    xlim = c((min_k - range), (min_k + range)), 
+    ylim = c(min_v/(row - 1) - 0.1, min_v/(row - 1) + 0.1), 
+    type = "l", xlab = "k", ylab = "LOO",
+    main = "LOO(k) (Окрестность точки)"
+  )
+  points(min_k, min_v/(row - 1), pch = 21, bg = "black")
+  
+  return(min_k)
+  
+}
+```
+![Image alt](https://github.com/Ragnarok7861/Victor/blob/master/images/LOO_6nn.png) 
+
+![Image alt](https://github.com/Ragnarok7861/Victor/blob/master/images/LOO_6nn_near.png)
+
+
