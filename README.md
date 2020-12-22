@@ -165,4 +165,13 @@ LOO <- function(arr){
 
 ![Image alt](https://github.com/Ragnarok7861/Victor/blob/master/LOO_6nn_near.png)
 
+Для данной выборки LOO возвращает k, равный 6. Теперь запустим 6NN для 10 случаной выбранных точек.
+
+![Image alt](https://github.com//Ragnarok7861/Victor/blob/master/6nn_10points.png)
+
+Посмотрим на карту классификации для 6NN.
+
+![Image alt](https://github.com/Ragnarok7861/Victor/blob/master/6nn_map.png)
+
+
 
