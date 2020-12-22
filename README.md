@@ -161,8 +161,8 @@ LOO <- function(arr){
   
 }
 ```
-![Image alt](https://github.com/Ragnarok7861/Victor/blob/master/images/LOO_6nn.png) 
+![Image alt](https://github.com/Ragnarok7861/Victor/blob/master/LOO_6nn.png) 
 
-![Image alt](https://github.com/Ragnarok7861/Victor/blob/master/images/LOO_6nn_near.png)
+![Image alt](https://github.com/Ragnarok7861/Victor/blob/master/LOO_6nn_near.png)
 
 
