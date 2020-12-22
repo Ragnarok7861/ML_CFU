@@ -244,3 +244,32 @@ LOO_q <- function(arr, k) {
 ![Image alt](https://github.com/Ragnarok7861/Victor/blob/master/LOO_6wnn.png)
 
 ![Image alt](https://github.com/Ragnarok7861/Victor/blob/master/LOO_6wnn_near.png)
+
+Сам алгоритм kwNN выглядит так:
+
+```R
+kwNN <- function(k, ordered_arr, weights){
+  
+  order_and_weight <- cbind(ordered_arr, weights)
+  classes <- order_and_weight[1:k, 3:4]
+  
+  w1 <- sum(classes[classes$Species == "setosa", 2])
+  w2 <- sum(classes[classes$Species == "versicolor", 2])
+  w3 <- sum(classes[classes$Species == "virginica", 2])
+  
+  answer <- matrix(c(w1, w2, w3), nrow = 1, ncol = 3, byrow = TRUE, list(c(1), c(1, 2, 3)))
+  
+  class <- c("setosa", "versicolor", "virginica")
+  
+  return(class[which.max(answer)])
+  
+}
+```
+
+Отобразим 10 случайно выбранных точек с помощью алгоритма kwNN, при k = 6, а q = 0.56.
+
+![Image alt](https://github.com/Ragnarok7861/Victor/blob/master/6wnn_10points.png)
+
+Теперь посмотрим на карту классификации.
+
+![Image alt](https://github.com/Ragnarok7861/Victor/blob/master/6wnn_map.png)
