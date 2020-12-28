@@ -315,3 +315,5 @@ kwNN <- function(k, ordered_arr, weights){
 *Теорема. Если известны априорные вероятности Py и функции правдоподобия py(x), и, кроме того, λyy = 0 и λys ≡ λy для всех y, s ∈ Y , то минимум среднего риска достигается алгоритм
 
 ![Image alt](https://github.com/Ragnarok7861/Victor/blob/master/th.png)
+
+![Image alt](https://github.com/Ragnarok7861/Victor/blob/master/fm.png)
