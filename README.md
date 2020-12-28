@@ -380,3 +380,7 @@ for (i1 in 1:n) {
   }
 }
 ~~~
+
+Взглянем на карту классификации с разделяющими линиями классов:
+
+![Image alt](https://github.com/jelupre/ML1/blob/master/images/LDF_map.png)
